@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Description Keyword Extractor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>NLP-Based Job Description Keyword Extractor</h1>
+        <p>Extract important technical skills, qualifications, and keywords from job descriptions using tokenization, stop-word removal, and TF-IDF keyword extraction.</p>
+    </header>
+
+    <main>
+        <section class="input-section">
+            <h2>Enter Job Descriptions</h2>
+            <div id="jd-container">
+                <div class="jd-entry">
+                    <label>Job Description 1:</label>
+                    <textarea class="jd-textarea" rows="4" placeholder="Paste job description text here..."></textarea>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="add-jd" class="btn btn-secondary">+ Add Another Job Description</button>
+                <button id="extract-btn" class="btn btn-primary">Extract Keywords</button>
+            </div>
+        </section>
+
+        <section id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Processing job descriptions...</p>
+        </section>
+
+        <section id="results" class="results hidden">
+            <h2>Results</h2>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-value" id="num-jds">0</span>
+                    <span class="stat-label">Job Descriptions</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="total-words">0</span>
+                    <span class="stat-label">Total Words</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="unique-keywords">0</span>
+                    <span class="stat-label">Unique Keywords</span>
+                </div>
+            </div>
+
+            <div class="result-block">
+                <h3>1. Word Frequency (Top 15 Keywords)</h3>
+                <div class="chart-container">
+                    <img id="freq-chart" src="" alt="Word Frequency Chart">
+                </div>
+                <div class="keyword-table-wrap">
+                    <table id="freq-table">
+                        <thead>
+                            <tr><th>#</th><th>Keyword</th><th>Frequency</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="result-block">
+                <h3>2. TF-IDF Keywords per Job Description</h3>
+                <div class="chart-container">
+                    <img id="tfidf-chart" src="" alt="TF-IDF Chart">
+                </div>
+                <div id="jd-keywords"></div>
+            </div>
+
+            <div class="result-block">
+                <h3>3. Top Keywords by Mean TF-IDF</h3>
+                <div class="chart-container">
+                    <img id="mean-chart" src="" alt="Mean TF-IDF Chart">
+                </div>
+                <div class="keyword-table-wrap">
+                    <table id="mean-table">
+                        <thead>
+                            <tr><th>#</th><th>Keyword</th><th>Mean TF-IDF</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>NLP Mini Project - Job Description Keyword Extractor | Kinjal Shivprasad Ojha (21) &amp; Ashish Sharma (54) | CMPN-B | 2026-27</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
